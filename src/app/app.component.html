@@ -1,60 +1,20 @@
-<div class="row">
-  
-  <div class="col-5 w-25 mt-5" style="margin-left: 150px;">
-    <h2 class="text-center">Student Data Input Form</h2>
-    <form #f="ngForm">
-      <div class="mt-2">
-        <label for="id" class="form-label">ID:</label>
-        <input type="text" name="id"   [(ngModel)]="id" #id1="ngModel" class="form-control" required minlength="3" />
-      </div>
-      <ul class="text-danger list-unstyled" *ngIf="id1.dirty && id1.invalid">
-        <li *ngIf="id1.errors?.['required']">Do not empty this field</li>
-        <li  *ngIf="id1.errors?.['minlength']" >Minimum 3 charecter</li>
-      </ul>
 
-      <div class="mt-2">
-        <label for="name" class="form-label">name:</label>
-        <input type="text" name="name" #name1="ngModel" [(ngModel)]="name" class="form-control" />
-      </div>
-      <div class="mt-2">
-        <label for="email" class="form-label">Email:</label>
-        <input type="text"  name="email"  [(ngModel)]="email" #email1="ngModel" class="form-control" required pattern="^[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,3}"/>
-      </div>
-      <ul class="text-danger list-unstyled" *ngIf="email1.dirty && email1.invalid">
-        <li *ngIf="email1.errors?.['required']">Do not empty this field</li>
-        <li *ngIf="email1.errors?.['pattern']" >Enter a Valid Email</li>
-      </ul>
-      <div class="mt-2">
-        <label for="round" class="form-label">Round:</label>
-        <input type="text"  name="round" #round1="ngModel" [(ngModel)]="round" class="form-control" />
-      </div>
-      <div class="mt-4">
-        <button type="submit" class=" btn btn-outline-success ms-5" [disabled]="!f.valid" (click)="addStudent()">Submit</button>
-        <button type="submit" class=" btn btn-outline-primary ms-3" [disabled]="!f.valid" (click)="updateStudent(id1.value,name1.value,email1.value,round1.value)">Update</button>
-        <button type="submit" class=" btn btn-outline-warning ms-3" [disabled]="!f.valid"  (click)="deleteStudent(id1.value)">Delete</button>
-      </div>
-    </form>
-   
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/home" class="nav-link active" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about" class="nav-link active" routerLinkActive="active">About</a>
+        </li>
+       </ul>
+    </div>
   </div>
-  <div class="col-5 mt-5" style="margin-left: 200px;">
-    <h2 class="text-center my-3">Student Data Table</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr class="table-info text-center">
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Round</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="text-center" *ngFor="let x of student" (click)="getStudent(x)">
-          <th scope="row">{{x.id}}</th>
-          <td>{{x.name}}</td>
-          <td>{{x.email}}</td>
-          <td>{{x.round}}</td>
-        </tr>
-       </tbody>
-    </table>
-  </div>
-</div>
+</nav>
+<router-outlet></router-outlet>
